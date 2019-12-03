@@ -14,7 +14,8 @@ public class TestaListaPonto {
             // cria o menu para o usuario
             System.out.println("1-Adicionar no final");
             System.out.println("2-Adicionar em posicao");
-            System.out.println("2-Pesquisa em posicao");
+            System.out.println("3-Pesquisa em posicao");
+            System.out.println("4-Remover Elemento do vetor");
             System.out.println("7-Sair");
             // pega a opcao do usuario
             System.out.print("escolha uma opcao:");
@@ -71,6 +72,19 @@ public class TestaListaPonto {
                 System.out.println(container.NumePesquisado[0]);
                 System.out.println(container.ResulPes);
             }
+             if (opc == 4 ){
+                
+                 int x;
+                System.out.print("digite a posicao a ser removida:");
+                x = ler.nextInt();
+                Ponto p = new Ponto(x);
+               container.removerVetor(p);
+                 System.out.println(container);
+               
+               
+                 
+                 
+             }
             if( opc == 7 ){
                 // sair do programa
                 break;
