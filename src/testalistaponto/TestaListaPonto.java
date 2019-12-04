@@ -18,6 +18,7 @@ public class TestaListaPonto {
             System.out.println("2-Adicionar em posicao");
             System.out.println("3-Pesquisa em posicao");
             System.out.println("4-Remover Elemento do vetor");
+            System.out.println("5-Calcular a distância dos dois pontos mais distantesna coleção");
             System.out.println("7-Sair");
             // pega a opcao do usuario
             System.out.print("escolha uma opcao:");
@@ -83,6 +84,10 @@ public class TestaListaPonto {
                 container.removerVetor();
                  System.out.println(container);
                }
+             if (opc == 5 ){
+                 container.CalculaDistância();
+                 System.out.println(container.ResulPes);
+             }
             if( opc == 7 ){
                 // sair do programa
                 break;

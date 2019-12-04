@@ -7,6 +7,7 @@ public class listaPonto {
     int[] X, Y;
     private int validos;
     int posi;
+    float resultado;
     String ResulPes, ResposDelet;
 
     public listaPonto(int N) {
@@ -77,6 +78,25 @@ public class listaPonto {
             }
             validos--;
         }
+    }
+    
+    public void CalculaDistância(){
+        int[] a = new int [2];
+        float maior = 0;
+        for (int i = 0; i < validos; i++) {
+            for (int t = 0; t < validos; t++) {
+                if (i != t) {
+                resultado = ((this.X[i] - this.X[t]) *(this.X[i] - this.X[t])) + ((this.Y[i] - this.Y[t]) * (this.Y[i] - this.Y[t]));
+                this.resultado = (float) Math.sqrt(resultado);
+                if ((resultado > maior) || (i == 0 && t == 1)) {
+                    maior = resultado;
+                    a[0] = i;
+                    a[1] = t;
+                }
+                }
+            }
+        }
+        this.ResulPes = ("valor: "+maior+"\nposicao ["+a[0]+"] ["+a[1]+"]");
     }
 
     public void imprime() {
