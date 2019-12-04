@@ -5,7 +5,6 @@ public class listaPonto {
 
     private Ponto pontos[];
     int[] X, Y;
-    Ponto NumePesquisado[] = new Ponto[0];
     private int validos;
     int posi;
     String ResulPes, ResposDelet;
@@ -44,6 +43,8 @@ public class listaPonto {
             //vai passar os numeros para frente
             for (int i = ValorDEi; i >= posi; i--) {
                 this.pontos[Valor] = this.pontos[i];
+                this.X[Valor] = this.X[i];
+                this.Y[Valor] = this.Y[i];
                 Valor--;
             }
             // adiciona o ponto p no vetor de  pontos[]
@@ -59,7 +60,6 @@ public class listaPonto {
             String a = this.pontos[k].toString();
             if (a.equals(b)) {
                 this.ResulPes = "\nposição : " + k + "\n";
-                //k = this.pontos.length;
             }
         }
     }
@@ -74,7 +74,6 @@ public class listaPonto {
                 this.pontos[i] = this.pontos[i + 1];
                 this.X[i] = this.X[i + 1];
                 this.Y[i] = this.Y[i + 1];
-                //this.pontos[this.validos--] = p;
             }
             validos--;
         }
