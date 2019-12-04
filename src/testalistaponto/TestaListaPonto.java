@@ -8,6 +8,8 @@ public class TestaListaPonto {
     public static void main(String[] args) {
         Scanner  ler = new Scanner(System.in);
         // cria o container listaPonto com 100 posicoes
+        //Ponto p = new Ponto(1, 2);
+        //System.out.println(p.getX()+""+p.getY());
         listaPonto container = new listaPonto(100);
         // while infinito
         while( true ){
@@ -52,12 +54,12 @@ public class TestaListaPonto {
                 //elemento, ou seja, um objeto da classe Ponto.
                 container.AddComPosi(p);
                 //container.imprime();
-                
+                System.out.println(container.X[0]);
                 System.out.println(container);
             }
             if( opc == 3 ){
                 // adiciona um ponto no final da colecao
-                int x, y, posicao;
+                int x, y;
                 System.out.print("digite o x:");
                 x = ler.nextInt();
                 System.out.print("digite o y:");
@@ -68,23 +70,19 @@ public class TestaListaPonto {
                 //elemento, ou seja, um objeto da classe Ponto.
                 container.pesquisa(p);
                 //container.ResulPes;
-                System.out.println(container.pontos[0]);
-                System.out.println(container.NumePesquisado[0]);
+//                System.out.println(container.pontos[0]);
+//                System.out.println(container.NumePesquisado[0]);
                 System.out.println(container.ResulPes);
             }
              if (opc == 4 ){
                 
-                 int x;
+                 int posicao;
                 System.out.print("digite a posicao a ser removida:");
-                x = ler.nextInt();
-                Ponto p = new Ponto(x);
-               container.removerVetor(p);
+                posicao = ler.nextInt();
+                container.local(posicao);
+                container.removerVetor();
                  System.out.println(container);
-               
-               
-                 
-                 
-             }
+               }
             if( opc == 7 ){
                 // sair do programa
                 break;

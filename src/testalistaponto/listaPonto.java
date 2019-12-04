@@ -3,13 +3,17 @@ package testalistaponto;
 // classe equivalente ao ArrayList
 public class listaPonto {
 
-    Ponto pontos[];
-    Ponto NumePesquisado[] = new Ponto[1];
+    private Ponto pontos[];
+    int[] X, Y;
+    Ponto NumePesquisado[] = new Ponto[0];
     private int validos;
-    int posi, ResulPes;
+    int posi;
+    String ResulPes, ResposDelet;
 
     public listaPonto(int N) {
         this.pontos = new Ponto[N];
+        this.X = new int[N];
+        this.Y = new int[N];
         this.validos = 0;
     }
 
@@ -23,6 +27,8 @@ public class listaPonto {
         if (this.validos < pontos.length) {
             // adiciona o ponto p no vetor de  pontos[]
             // ou seja, na primeira posicao disponivel no final do vetor
+            this.X[this.validos] = p.getX();
+            this.Y[this.validos] = p.getY();
             this.pontos[this.validos++] = p;
         }
     }
@@ -47,28 +53,30 @@ public class listaPonto {
     }
 
     public void pesquisa(Ponto p) {
-        this.NumePesquisado[0] = p;
-        this.ResulPes = -1;
-        for (int k = 0; k < this.pontos.length; k++) {
-            this.ResulPes = k;
-            if (this.pontos[k] == this.NumePesquisado[0]) {
-                this.ResulPes = 1;
-                k = this.pontos.length;
+        String b = p.toString();
+        this.ResulPes = "-1";
+        for (int k = 0; k < this.validos; k++) {
+            String a = this.pontos[k].toString();
+            if (a.equals(b)) {
+                this.ResulPes = "\nposição : " + k + "\n";
+                //k = this.pontos.length;
             }
         }
     }
 
-    public void removerVetor(Ponto p) {
-        int posicao = p.getRemover();
-        if (!(this.validos < pontos.length) && (this.posi <= this.validos)) {
-            System.out.println("posicao invalida!");
+    public void removerVetor() {
+        
+        if ((this.validos > pontos.length) && (this.posi > this.validos)) {
+            ResposDelet = "posicao invalida!";
 
-        }
-
-        for (int i = posicao; posicao < this.validos - 1; i++) {
-            this.pontos[i] = this.pontos[i + 1];
-
-            this.pontos[this.validos--] = p;
+        } else {
+            for (int i = posi; i < this.validos - 1; i++) {
+                this.pontos[i] = this.pontos[i + 1];
+                this.X[i] = this.X[i + 1];
+                this.Y[i] = this.Y[i + 1];
+                //this.pontos[this.validos--] = p;
+            }
+            validos--;
         }
     }
 
@@ -86,6 +94,14 @@ public class listaPonto {
         String resposta = "\nContainer={";
         for (int i = 0; i < this.validos; i++) {
             resposta += pontos[i] + " ";
+        }
+        resposta += "}\n x = {";
+        for (int i = 0; i < this.validos; i++) {
+            resposta += X[i] + ", ";
+        }
+        resposta += "}\n y = {";
+        for (int i = 0; i < this.validos; i++) {
+            resposta += Y[i] + ", ";
         }
         resposta += "}\n";
         return resposta;
