@@ -19,6 +19,7 @@ public class TestaListaPonto {
             System.out.println("3-Pesquisa em posicao");
             System.out.println("4-Remover Elemento do vetor");
             System.out.println("5-Calcular a distância dos dois pontos mais distantesna coleção");
+            System.out.println("6-Pontos contidos em uma circunferência");
             System.out.println("7-Sair");
             // pega a opcao do usuario
             System.out.print("escolha uma opcao:");
@@ -55,7 +56,6 @@ public class TestaListaPonto {
                 //elemento, ou seja, um objeto da classe Ponto.
                 container.AddComPosi(p);
                 //container.imprime();
-                System.out.println(container.X[0]);
                 System.out.println(container);
             }
             if( opc == 3 ){
@@ -73,7 +73,7 @@ public class TestaListaPonto {
                 //container.ResulPes;
 //                System.out.println(container.pontos[0]);
 //                System.out.println(container.NumePesquisado[0]);
-                System.out.println(container.ResulPes);
+                System.out.println(container.Resultado);
             }
              if (opc == 4 ){
                 
@@ -86,12 +86,26 @@ public class TestaListaPonto {
                }
              if (opc == 5 ){
                  container.CalculaDistância();
-                 System.out.println(container.ResulPes);
+                 System.out.println(container.Resultado);
              }
-            if( opc == 7 ){
+             if (opc == 6) {
+                int x, y;
+                 System.out.println("digite o raio");
+                float raio = ler.nextFloat();
+                System.out.print("digite o x:");
+                x = ler.nextInt();
+                System.out.print("digite o y:");
+                y = ler.nextInt();
+                //cria um novo ponto
+                Ponto p= new Ponto(x, y);
+                container.circufarencia(p, raio);
+                System.out.println(container.Resultado);
+                
+            }
+             if( opc == 7 ){
                 // sair do programa
                 break;
-            }
+             }
         }// fim do while
         System.out.println("fim do programa.");
         

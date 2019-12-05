@@ -4,11 +4,11 @@ package testalistaponto;
 public class listaPonto {
 
     private Ponto pontos[];
-    int[] X, Y;
+    private int[] X, Y;
     private int validos;
-    int posi;
-    float resultado;
-    String ResulPes, ResposDelet;
+    private int posi, raio;
+    //é responsavel por receber o resultado das funções pesquisa, removerVetor e CalculaDistância
+    String Resultado;
 
     public listaPonto(int N) {
         this.pontos = new Ponto[N];
@@ -56,11 +56,11 @@ public class listaPonto {
 
     public void pesquisa(Ponto p) {
         String b = p.toString();
-        this.ResulPes = "-1";
+        this.Resultado = "-1";
         for (int k = 0; k < this.validos; k++) {
             String a = this.pontos[k].toString();
             if (a.equals(b)) {
-                this.ResulPes = "\nposição : " + k + "\n";
+                this.Resultado = "\nposição : " + k + "\n";
             }
         }
     }
@@ -68,7 +68,7 @@ public class listaPonto {
     public void removerVetor() {
         
         if ((this.validos > pontos.length) && (this.posi > this.validos)) {
-            ResposDelet = "posicao invalida!";
+            Resultado = "posicao invalida!";
 
         } else {
             for (int i = posi; i < this.validos - 1; i++) {
@@ -82,12 +82,12 @@ public class listaPonto {
     
     public void CalculaDistância(){
         int[] a = new int [2];
-        float maior = 0;
+        float maior = 0,resultado;;
         for (int i = 0; i < validos; i++) {
             for (int t = 0; t < validos; t++) {
                 if (i != t) {
                 resultado = ((this.X[i] - this.X[t]) *(this.X[i] - this.X[t])) + ((this.Y[i] - this.Y[t]) * (this.Y[i] - this.Y[t]));
-                this.resultado = (float) Math.sqrt(resultado);
+                resultado = (float) Math.sqrt(resultado);
                 if ((resultado > maior) || (i == 0 && t == 1)) {
                     maior = resultado;
                     a[0] = i;
@@ -96,8 +96,27 @@ public class listaPonto {
                 }
             }
         }
-        this.ResulPes = ("valor: "+maior+"\nposicao ["+a[0]+"] ["+a[1]+"]");
+        this.Resultado = ("maior distanci é de  "+maior+"\n entre a posicao ["+a[0]+"] e ["+a[1]+"]");
     }
+    
+    public void circufarencia(Ponto p, float raio){
+    int x, y;
+    float raiz;
+    boolean circu;
+    x = p.getX();
+    y = p.getY();
+    Resultado = "os pontos: ";
+            for (int t = 0; t < validos; t++) {
+                raiz = ((x - this.X[t]) *(x - this.X[t])) + ((y - this.Y[t]) * (y - this.Y[t]));
+                raiz = (float) Math.sqrt(raiz);
+                circu = raiz <= raio;
+                if (circu == true) {
+                    Resultado += pontos[t];
+                }
+                    
+            }
+            Resultado += " estão dentro da circufarencia";
+}
 
     public void imprime() {
         System.out.println();
@@ -113,14 +132,6 @@ public class listaPonto {
         String resposta = "\nContainer={";
         for (int i = 0; i < this.validos; i++) {
             resposta += pontos[i] + " ";
-        }
-        resposta += "}\n x = {";
-        for (int i = 0; i < this.validos; i++) {
-            resposta += X[i] + ", ";
-        }
-        resposta += "}\n y = {";
-        for (int i = 0; i < this.validos; i++) {
-            resposta += Y[i] + ", ";
         }
         resposta += "}\n";
         return resposta;
