@@ -1,4 +1,7 @@
 package testalistaponto;
+// Autores
+// Rubens L. Ricci
+// Lucas Matias
 
 // classe equivalente ao ArrayList
 public class listaPonto {
@@ -6,7 +9,6 @@ public class listaPonto {
     private Ponto pontos[];
     private int[] X, Y;
     private int validos;
-    private int posi, raio;
     //é responsavel por receber o resultado das funções pesquisa, removerVetor e CalculaDistância
     String Resultado;
 
@@ -15,11 +17,6 @@ public class listaPonto {
         this.X = new int[N];
         this.Y = new int[N];
         this.validos = 0;
-    }
-
-    //passar para 
-    void local(int posicao) {
-        this.posi = posicao;
     }
 
     public void adiciona(Ponto p) {
@@ -33,9 +30,9 @@ public class listaPonto {
         }
     }
 
-    public void AddComPosi(Ponto p) {
+    public void AddComPosi(Ponto p, int posi) {
         // testa se o vetor nao estah cheio
-        if ((this.validos < pontos.length) && (this.posi <= this.validos)) {
+        if ((this.validos < pontos.length) && (posi <= this.validos)) {
             //recebe validos - 1
             int ValorDEi = validos - 1;
             //recebe validos +1
@@ -65,9 +62,9 @@ public class listaPonto {
         }
     }
 
-    public void removerVetor() {
+    public void removerVetor(int posi) {
         
-        if ((this.validos > pontos.length) && (this.posi > this.validos)) {
+        if ((this.validos > pontos.length) && (posi > this.validos)) {
             Resultado = "posicao invalida!";
 
         } else {
@@ -96,10 +93,10 @@ public class listaPonto {
                 }
             }
         }
-        this.Resultado = ("maior distanci é de  "+maior+"\n entre a posicao ["+a[0]+"] e ["+a[1]+"]");
+        this.Resultado = ("maior distancia é de  "+maior+"\n entre os pontos ["+pontos[a[0]]+"] e ["+pontos[a[1]]+"]");
     }
     
-    public void circufarencia(Ponto p, float raio){
+    public void circunferencia(Ponto p, float raio){
     int x, y;
     float raiz;
     boolean circu;

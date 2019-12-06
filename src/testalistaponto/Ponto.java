@@ -1,5 +1,7 @@
 package testalistaponto;
-
+// Autores
+// Rubens L. Ricci
+// Lucas Matias
 public class Ponto {
 
     private int x, y;

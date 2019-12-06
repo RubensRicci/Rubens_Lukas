@@ -1,5 +1,7 @@
 package testalistaponto;
-
+// Autores
+// Rubens L. Ricci
+// Lucas Matias
 import java.util.Scanner;
 
 public class TestaListaPonto {
@@ -8,8 +10,6 @@ public class TestaListaPonto {
     public static void main(String[] args) {
         Scanner  ler = new Scanner(System.in);
         // cria o container listaPonto com 100 posicoes
-        //Ponto p = new Ponto(1, 2);
-        //System.out.println(p.getX()+""+p.getY());
         listaPonto container = new listaPonto(100);
         // while infinito
         while( true ){
@@ -41,7 +41,7 @@ public class TestaListaPonto {
                 System.out.println(container);
             }
             if( opc == 2 ){
-                // adiciona um ponto no final da colecao
+                // adiciona um ponto em uma posicao específica
                 int x, y, posicao;
                 System.out.print("digite o x:");
                 x = ler.nextInt();
@@ -51,54 +51,50 @@ public class TestaListaPonto {
                 posicao = ler.nextInt();
                 //cria um novo ponto
                 Ponto p= new Ponto(x, y);
-                container.local(posicao);
                 //O método adiciona recebe como parâmetro o novo 
                 //elemento, ou seja, um objeto da classe Ponto.
-                container.AddComPosi(p);
+                container.AddComPosi(p, posicao);
                 //container.imprime();
                 System.out.println(container);
             }
             if( opc == 3 ){
-                // adiciona um ponto no final da colecao
+                // pesquisa um ponto da colecao
                 int x, y;
                 System.out.print("digite o x:");
                 x = ler.nextInt();
                 System.out.print("digite o y:");
                 y = ler.nextInt();
-                //cria um novo ponto
+                //recebe um ponto
                 Ponto p= new Ponto(x, y);
-                //O método adiciona recebe como parâmetro o novo 
-                //elemento, ou seja, um objeto da classe Ponto.
+                //recebe o ponto pesquisado
                 container.pesquisa(p);
                 //container.ResulPes;
-//                System.out.println(container.pontos[0]);
-//                System.out.println(container.NumePesquisado[0]);
                 System.out.println(container.Resultado);
             }
              if (opc == 4 ){
-                
-                 int posicao;
+                 // remove um elemento do vetor
                 System.out.print("digite a posicao a ser removida:");
-                posicao = ler.nextInt();
-                container.local(posicao);
-                container.removerVetor();
+                int posicao = ler.nextInt();
+                container.removerVetor(posicao);
                  System.out.println(container);
                }
              if (opc == 5 ){
+                 // calcula os dois pontos mais distantes
                  container.CalculaDistância();
                  System.out.println(container.Resultado);
              }
              if (opc == 6) {
+                 //calcula os pontos que estao dento de uma circunferência
                 int x, y;
-                 System.out.println("digite o raio");
+                 System.out.print("digite o raio: ");
                 float raio = ler.nextFloat();
                 System.out.print("digite o x:");
                 x = ler.nextInt();
                 System.out.print("digite o y:");
                 y = ler.nextInt();
-                //cria um novo ponto
+                //pega o ponto central ponto
                 Ponto p= new Ponto(x, y);
-                container.circufarencia(p, raio);
+                container.circunferencia(p, raio);
                 System.out.println(container.Resultado);
                 
             }
